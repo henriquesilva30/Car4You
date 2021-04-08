@@ -43,7 +43,7 @@ public class Utilizador_BLL {
         if (em == null) em = factory.createEntityManager();
         
         Query q1 = em.createNamedQuery("Utilizador.findByIdUtilizador");
-        q1.setParameter("id_utilizador", idUtilizador);
+        q1.setParameter("idUtilizador", idUtilizador);
         Object obj = q1.getSingleResult();
         
         if(obj != null){
