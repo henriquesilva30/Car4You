@@ -43,6 +43,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Utilizador.findByCodPostal", query = "SELECT u FROM Utilizador u WHERE u.codPostal = :codPostal")
     , @NamedQuery(name = "Utilizador.findByNif", query = "SELECT u FROM Utilizador u WHERE u.nif = :nif")
     , @NamedQuery(name = "Utilizador.findByTelemovel", query = "SELECT u FROM Utilizador u WHERE u.telemovel = :telemovel")
+    , @NamedQuery(name = "Utilizador.findByTipo_Utilizador", query = "SELECT u FROM Utilizador u WHERE u.tipo_utilizador = :tipo_utilizador")
     , @NamedQuery(name = "Utilizador.findByEmail", query = "SELECT u FROM Utilizador u WHERE u.email = :email")
     , @NamedQuery(name = "Utilizador.findByPasse", query = "SELECT u FROM Utilizador u WHERE u.passe = :passe")
     , @NamedQuery(name = "Utilizador.findByDataRegisto", query = "SELECT u FROM Utilizador u WHERE u.dataRegisto = :dataRegisto")})
@@ -54,6 +55,9 @@ public class Utilizador implements Serializable {
     @Basic(optional = false)
     @Column(name = "TELEMOVEL")
     private Integer telemovel;
+    @Basic(optional = false)
+    @Column(name = "TIPO_UTILIZADOR")
+    private Integer tipo_utilizador;
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -99,7 +103,7 @@ public class Utilizador implements Serializable {
         this.idUtilizador = idUtilizador;
     }
 
-    public Utilizador(Integer idUtilizador, String nome, String distrito, String cidade, String morada, String portaAndar, String codPostal, Integer nif, Integer telemovel, String email, String passe) {
+    public Utilizador(Integer idUtilizador, String nome, String distrito, String cidade, String morada, String portaAndar, String codPostal, Integer nif, Integer telemovel, Integer tipo_utilizador, String email, String passe) {
         this.idUtilizador = idUtilizador;
         this.nome = nome;
         this.distrito = distrito;
@@ -109,6 +113,7 @@ public class Utilizador implements Serializable {
         this.codPostal = codPostal;
         this.nif = nif;
         this.telemovel = telemovel;
+        this.tipo_utilizador = tipo_utilizador;
         this.email = email;
         this.passe = passe;
     }
@@ -242,6 +247,13 @@ public class Utilizador implements Serializable {
 
     public void setTelemovel(Integer telemovel) {
         this.telemovel = telemovel;
+    }
+       public Integer getTipo_Utilizador() {
+        return tipo_utilizador;
+    }
+
+    public void setTipo_Utilizador(Integer tipo_utilizador) {
+        this.tipo_utilizador = tipo_utilizador;
     }
     
 }
