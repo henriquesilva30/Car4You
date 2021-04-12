@@ -56,6 +56,27 @@ public class Utilizador_BLL {
         return uti;
     }
     
+//     public static Utilizador readTipoUtilizador(int tipoUtilizador){
+//        Utilizador uti = null;
+//        if(factory == null)
+//            factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+//        
+//        if (em == null) em = factory.createEntityManager();
+//        
+//        Query q1 = em.createNamedQuery("Utilizador.findByTipo_Utilizador");
+//        q1.setParameter("tipo_utilizador", tipoUtilizador);
+//        Object obj = q1.getSingleResult();
+//        
+//        if(obj != null){
+//            uti = ((Utilizador)obj);
+//        }
+//        else
+//            return null;
+//        
+//        
+//        return uti;
+//    }
+    
     
     public static List<Utilizador> readAll(){
         List<Utilizador> listaUti = new ArrayList<>();
@@ -75,15 +96,15 @@ public class Utilizador_BLL {
     }
     
     
-    public static List<Utilizador> readAll(String nome){
+    public static List<Utilizador> readTipoUtilizador(int tipoUtilizador){
         List<Utilizador> listaNome = new ArrayList<>();
         if(factory == null)
             factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
         
         if (em == null) em = factory.createEntityManager();
         
-        Query q1 = em.createNamedQuery("Utilizador.findAllByNome");
-        q1.setParameter("nome", "%"+nome+"%");
+        Query q1 = em.createNamedQuery("Utilizador.findByTipo_Utilizador");
+        q1.setParameter("tipo_utilizador", tipoUtilizador);
         List<Object> result = q1.getResultList();
         
         for(Object uti : result){
